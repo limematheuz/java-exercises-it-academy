@@ -10,84 +10,83 @@ public class M4EEXTRA2 {
         System.out.println("Escribe un numero dentro del rango de 1 a 99");
         int num = sc.nextInt();
 
-        int decenas = num / 10;
-        int unidades = num % 10;
-
         if (num < 0 || num > 99) {
             throw new Error("El número debe estar entre 1 y 99");
         } else {
+            int decenas = num / 10;
+            int unidades = num % 10;
+
             String resultado = "";
-            String unidadStr = "";
-            String specialStr = "";
-            String decenasStr = "";
 
             if (num <= 9) {
                 switch (num) {
                     case 0:
-                        unidadStr = "cero";
+                        resultado = "cero";
                         break;
                     case 1:
-                        unidadStr = "uno";
+                        resultado = "uno";
                         break;
                     case 2:
-                        unidadStr = "dos";
+                        resultado = "dos";
                         break;
                     case 3:
-                        unidadStr = "tres";
+                        resultado = "tres";
                         break;
                     case 4:
-                        unidadStr = "cuatro";
+                        resultado = "cuatro";
                         break;
                     case 5:
-                        unidadStr = "cinco";
+                        resultado = "cinco";
                         break;
                     case 6:
-                        unidadStr = "seis";
+                        resultado = "seis";
                         break;
                     case 7:
-                        unidadStr = "siete";
+                        resultado = "siete";
                         break;
                     case 8:
-                        unidadStr = "ocho";
+                        resultado = "ocho";
                         break;
                     case 9:
-                        unidadStr = "nueve";
+                        resultado = "nueve";
                         break;
                 }
             } else if (num >= 10 && num <= 19) {
                 switch (num) {
                     case 10:
-                        specialStr = "diez";
+                        resultado = "diez";
                         break;
                     case 11:
-                        specialStr = "once";
+                        resultado = "once";
                         break;
                     case 12:
-                        specialStr = "doce";
+                        resultado = "doce";
                         break;
                     case 13:
-                        specialStr = "trece";
+                        resultado = "trece";
                         break;
                     case 14:
-                        specialStr = "catorce";
+                        resultado = "catorce";
                         break;
                     case 15:
-                        specialStr = "quince";
+                        resultado = "quince";
                         break;
                     case 16:
-                        specialStr = "dieciseis";
+                        resultado = "dieciseis";
                         break;
                     case 17:
-                        specialStr = "diecisiete";
+                        resultado = "diecisiete";
                         break;
                     case 18:
-                        specialStr = "dieciocho";
+                        resultado = "dieciocho";
                         break;
                     case 19:
-                        specialStr = "diecinueve";
+                        resultado = "diecinueve";
                         break;
                 }
             } else if (num >= 20 && num < 100) {
+                String decenasStr = "";
+
                 switch (decenas) {
                     case 2:
                         decenasStr = "veinte";
@@ -114,12 +113,50 @@ public class M4EEXTRA2 {
                         decenasStr = "noventa";
                         break;
                 }
-                System.out.println("El número " + num + " en letras es: " + resultado);
+
+                if (unidades != 0) {
+                    String unidadesStr = "";
+                    switch (unidades) {
+                        case 1:
+                            unidadesStr = "uno";
+                            break;
+                        case 2:
+                            unidadesStr = "dos";
+                            break;
+                        case 3:
+                            unidadesStr = "tres";
+                            break;
+                        case 4:
+                            unidadesStr = "cuatro";
+                            break;
+                        case 5:
+                            unidadesStr = "cinco";
+                            break;
+                        case 6:
+                            unidadesStr = "seis";
+                            break;
+                        case 7:
+                            unidadesStr = "siete";
+                            break;
+                        case 8:
+                            unidadesStr = "ocho";
+                            break;
+                        case 9:
+                            unidadesStr = "nueve";
+                            break;
+                    }
+
+                    resultado = decenasStr + " y " + unidadesStr;
+                } else {
+                    resultado = decenasStr;
+                }
             }
-            sc.close();
+            System.out.println("El número " + num + " en letras es: " + resultado);
         }
+        sc.close();
     }
 }
+
 
 
 
