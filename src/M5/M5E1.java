@@ -11,7 +11,7 @@ public class M5E1 {
         int numDePalabras = sc.nextInt();
         sc.nextLine();
 
-        ArrayList<String> palabras = new ArrayList<String>();
+        ArrayList<String> palabras = new ArrayList<>();
 
         for (int i = 1; i <= numDePalabras; i++) {
             System.out.println("Introduce la palabra " + i + ": ");
