@@ -12,7 +12,6 @@ public class M5E3 {
         while (num != numRandom && numIntentos < maxIntentos) {
             numIntentos++;
 
-
             num = Integer.parseInt(JOptionPane.showInputDialog(null, "Intenta adivinar el numero entre el 1 y 10", "Numero de intentos: " + numIntentos, JOptionPane.QUESTION_MESSAGE));
 
             if (num == numRandom) {
