@@ -18,7 +18,7 @@ public class M5EEXTRA1 {
 
             if (numUser < 1 || numUser > 500) {
                 JOptionPane.showMessageDialog(null, "El número introducido no es válido. Debe estar entre 1 y 500.", "Error", JOptionPane.ERROR_MESSAGE);
-//                continue;
+//                continue;1
             }
 
             int distance = Math.abs(numUser - numRandom);
