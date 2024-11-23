@@ -11,7 +11,7 @@ public class M6E1 {
     }
 
     public static void restar(float a, float b) {
-        float result = 0;
+        float result;
         result = a - b;
         System.out.println("El resultado de la resta es: " + result);
     }
