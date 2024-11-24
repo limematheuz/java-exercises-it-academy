@@ -1,4 +1,4 @@
-package M7;
+package M7_1;
 
 import javax.swing.*;
 import java.util.ArrayList;

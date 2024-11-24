@@ -1,4 +1,4 @@
-package M7;
+package M7_1;
 
 import java.util.Scanner;
 
