@@ -61,6 +61,7 @@ public class Ordenador {
         this.capacidadDiscoDuro = capacidadDiscoDuro;
     }
 
+
     public String ejecutarPrograma(String programa){
         return "Ejecutando... " + programa;
     }
