@@ -62,7 +62,7 @@ public class Ordenador {
     }
 
 
-    public String ejecutarPrograma(String programa){
+    public String ejecutarPrograma(String programa) {
         return "Ejecutando... " + programa;
     }
 
