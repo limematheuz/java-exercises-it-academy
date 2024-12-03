@@ -8,23 +8,25 @@ public class Main {
 
         ArrayList<Hotel> hotels = new ArrayList<>();
 
-        int option;
         String hotelsList;
         String hotelName;
         String hotelnameDelete;
         String hotelMaintenanceCost;
 
-        do {
-            option = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    " 1. Ver hoteles\n" +
-                            " 2. Ver un hotel\n" +
-                            " 3. Dar de alta un hotel\n" +
-                            " 4. Modificar un hotel \n" +
-                            " 5. Dar de baja un hotel\n" +
-                            " 0. Salir del programa", "Menu de gestion de hoteles", JOptionPane.QUESTION_MESSAGE));
+        String[] options = {"Ver hoteles", "Ver un hotel", "Dar de alta un hotel", "Modificar un hotel", "Dar de baja un hotel", "Salir del programa"};
 
-            switch (option) {
-                case 1:
+        String selectedOption;
+
+        do {
+            selectedOption = (String) JOptionPane.showInputDialog(null, "Selecciona una opción:", "Menú de gestión de hoteles", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            if (selectedOption == null) {
+                JOptionPane.showMessageDialog(null, "Saliendo del programa");
+                break;
+            }
+
+            switch (selectedOption) {
+                case "Ver hoteles":
                     if (hotels.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "No hay hoteles registrados");
                     } else {
@@ -35,7 +37,7 @@ public class Main {
                         JOptionPane.showMessageDialog(null, maintenanceCost.toString());
                     }
                     break;
-                case 2:
+                case "Ver un hotel":
                     hotelName = getHotelByName(hotels, JOptionPane.showInputDialog(null, "Indica el nombre del hotel que quieres ver: "));
                     if (hotelName != null) {
                         JOptionPane.showMessageDialog(null, "Hotel: \n" + hotelName);
@@ -43,10 +45,10 @@ public class Main {
                         JOptionPane.showMessageDialog(null, "No se ha encontrado el hotel con el nombre: " + hotelName);
                     }
                     break;
-                case 3:
+                case "Dar de alta un hotel":
                     createHotel(hotels);
                     break;
-                case 4:
+                case "Modificar un hotel":
                     hotelName = JOptionPane.showInputDialog(null, "Indica el nombre del hotel que quieres modificar:");
                     Hotel hotelToUpdate = null;
 
@@ -64,7 +66,7 @@ public class Main {
                         JOptionPane.showMessageDialog(null, "No se ha encontrado el hotel con el nombre: " + hotelName);
                     }
                     break;
-                case 5:
+                case "Dar de baja un hotel":
                     hotelnameDelete = JOptionPane.showInputDialog(null, "Indica el nombre del hotel que quieres dar de baja:");
                     Hotel hotelToDelete = deleteHotel(hotels, hotelnameDelete);
 
@@ -74,13 +76,13 @@ public class Main {
                         JOptionPane.showMessageDialog(null, "No se ha encontrado el hotel con el nombre: " + hotelnameDelete);
                     }
                     break;
-                case 0:
+                case "Salir del programa":
                     JOptionPane.showMessageDialog(null, "Saliendo del programa");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida");
             }
-        } while (option != 0);
+        } while (!selectedOption.equals("Salir del programa"));
 
     }
 
@@ -94,7 +96,7 @@ public class Main {
             hotelsList.append(hotel.toString()).append("\n");
         }
 
-        return hotelsList.toString(); // Devuelve la lista de hoteles en forma de cadena
+        return hotelsList.toString();
     }
 
     public static String getHotelByName(ArrayList<Hotel> hotels, String name) {
