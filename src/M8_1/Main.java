@@ -1,4 +1,4 @@
-package M8;
+package M8_1;
 
 import javax.swing.*;
 
