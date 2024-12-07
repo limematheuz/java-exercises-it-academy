@@ -36,7 +36,7 @@ public class Cliente {
         return cuentas;
     }
 
-    public static void seeClientsList(ArrayList<Cliente> listaClientes) {
+    public static void getAllClients(ArrayList<Cliente> listaClientes) {
         if (listaClientes.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay clientes");
         }

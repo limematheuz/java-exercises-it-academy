@@ -30,12 +30,10 @@ public class Cuenta {
         }
     }
 
-    public boolean retirar( int cantidad){
-        boolean retirado = false;
+    public void retirar(int cantidad){
         if(cantidad > 0  && cantidad <= this.saldo){
             this.saldo -= cantidad;
-            retirado = true;
+
         }
-        return retirado;
     }
 }

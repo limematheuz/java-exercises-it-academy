@@ -44,12 +44,24 @@ public class Main {
                     removeClient();
                     break;
 
+                case "Retirar euros en una cuenta de un cliente/a":
+                    withdrawMoney();
+                    break;
+
+                case "Salir del programa":
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa");
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion no valida");
+                    break;
+
             }
         } while (!selectedOption.equals("Salir del programa"));
     }
 
     public static void getAllClient() {
-        Cliente.seeClientsList(listaClientes);
+        Cliente.getAllClients(listaClientes);
     }
 
     public static void createClient() {
@@ -122,4 +134,44 @@ public class Main {
         Cliente.removeClient(listaClientes);
     }
 
+    public static void withdrawMoney() {
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del cliente/a: ");
+        int numCuenta = Integer.parseInt(JOptionPane.showInputDialog("Introduce el número de cuenta: "));
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Introduce la cantidad a retirar: "));
+
+        Cliente clienteEncontrado = null;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getNombre().equalsIgnoreCase(nombre)) {
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+        if (clienteEncontrado == null) {
+            JOptionPane.showMessageDialog(null, "Cliente/a no encontrado/a");
+            return;
+        }
+
+        Cuenta cuentaEncontrada = null;
+        for (Cuenta cuenta : clienteEncontrado.getCuentas()) {
+            if (cuenta.getNumCuenta() == numCuenta) {
+                cuentaEncontrada = cuenta;
+                break;
+            }
+        }
+        if (cuentaEncontrada == null) {
+            JOptionPane.showMessageDialog(null, "Cuenta no encontrada");
+            return;
+        }
+
+        if (cantidad > cuentaEncontrada.getSaldo()) {
+            JOptionPane.showMessageDialog(null, "Fondos insuficientes.\nSaldo disponible: " + cuentaEncontrada.getSaldo() + " €");
+            return;
+        }
+
+        cuentaEncontrada.retirar(cantidad);
+        JOptionPane.showMessageDialog(null, "Retiro de " + cantidad + " € realizado con éxito!" +
+                "\nEn la cuenta: " + numCuenta +
+                "\nSaldo disponible: " + cuentaEncontrada.getSaldo());
+
+    }
 }
