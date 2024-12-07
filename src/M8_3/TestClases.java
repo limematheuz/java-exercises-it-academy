@@ -14,12 +14,12 @@ public class TestClases {
         boolean retirado = cuenta1.retirar(500);
         boolean retirado2 = cuenta1.retirar(2000);
 
-        boolean eliminada = cliente.eliminarCuenta(12345);
+//        boolean eliminada = cliente.removeClient();
 
         System.out.println("Saldo cuenta 1: " + cuenta1.getSaldo());
         System.out.println("Saldo cuenta 2: " + retirado);
         System.out.println("Cuenta eliminada: " + retirado2);
-        System.out.println("Cuenta eliminada: " + eliminada);
+//        System.out.println("Cuenta eliminada: " + eliminada);
 
     }
 }

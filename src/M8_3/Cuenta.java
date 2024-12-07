@@ -9,6 +9,13 @@ public class Cuenta {
         this.numCuenta = numCuenta;
     }
 
+    @Override
+    public String toString() {
+        return "Cuenta" +
+                "\nsaldo: " + saldo +
+                "\nnumCuenta: " + numCuenta;
+    }
+
     public int getSaldo(){
         return saldo;
     }

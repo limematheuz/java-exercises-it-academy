@@ -6,19 +6,17 @@ import java.util.ArrayList;
 public class Main {
     private static ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-
     public static void main(String[] args) {
-
-        ArrayList<Cuenta> listaCuentas = new ArrayList<>();
-
-
-        String[] options = {"Crear cliente/a", "Crear cuenta de un cliente/a", " Ingresar euros en una cuenta de un cliente/a", "Eliminar cliente/a", "Retirar euros en una cuenta de un cliente/a", "Salir del programa"};
-
+        String[] options = {"Ver clientes", "Crear cliente/a", "Crear cuenta de un cliente/a", "Ingresar euros en una cuenta de un cliente/a", "Eliminar cliente/a", "Retirar euros en una cuenta de un cliente/a", "Salir del programa"};
         String selectedOption;
+
+        listaClientes.add(new Cliente("Pepe", "Perez"));
+        listaClientes.add(new Cliente("Juan", "Garcia"));
+        listaClientes.add(new Cliente("Maria", "Lopez"));
+        listaClientes.add(new Cliente("Ana", "Gonzalez"));
 
         do {
             selectedOption = (String) JOptionPane.showInputDialog(null, "Selecciona una opcion: ", "Menu de gestion de cuentas", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-
 
             if (selectedOption == null) {
                 JOptionPane.showMessageDialog(null, "Saliendo del programa");
@@ -26,6 +24,10 @@ public class Main {
             }
 
             switch (selectedOption) {
+                case "Ver clientes":
+                    getAllClient();
+                    break;
+
                 case "Crear cliente/a":
                     createClient();
                     break;
@@ -37,8 +39,17 @@ public class Main {
                 case "Ingresar euros en una cuenta de un cliente/a":
                     addMoney();
                     break;
+
+                case "Eliminar cliente/a":
+                    removeClient();
+                    break;
+
             }
         } while (!selectedOption.equals("Salir del programa"));
+    }
+
+    public static void getAllClient() {
+        Cliente.seeClientsList(listaClientes);
     }
 
     public static void createClient() {
@@ -57,15 +68,16 @@ public class Main {
         for (Cliente cliente : listaClientes) {
             if (cliente.getNombre().equalsIgnoreCase(nombre)) {
                 clienteEncontrado = cliente;
+                break;
             }
+        }
 
-            if (clienteEncontrado != null) {
-                Cuenta nuevaCuenta = new Cuenta(numCuenta);
-                clienteEncontrado.añadirCuenta(nuevaCuenta);
-                JOptionPane.showMessageDialog(null, "Cuenta de cliente/a: " + clienteEncontrado.getNombre() + " \ncon la cuenta: " + numCuenta + " \ncreada con éxito");
-            } else {
-                JOptionPane.showMessageDialog(null, "Cliente/a  no encontrado/a");
-            }
+        if (clienteEncontrado != null) {
+            Cuenta nuevaCuenta = new Cuenta(numCuenta);
+            clienteEncontrado.añadirCuenta(nuevaCuenta);
+            JOptionPane.showMessageDialog(null, "Cuenta de cliente/a: " + clienteEncontrado.getNombre() + " \ncon la cuenta: " + numCuenta + " \ncreada con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "Cliente/a no encontrado/a");
         }
     }
 
@@ -87,7 +99,6 @@ public class Main {
             return;
         }
 
-        // Buscar la cuenta del cliente por número
         Cuenta cuentaEncontrada = null;
         for (Cuenta cuenta : clienteEncontrado.getCuentas()) {
             if (cuenta.getNumCuenta() == numCuenta) {
@@ -106,7 +117,9 @@ public class Main {
                 "\nEn la cuenta: " + numCuenta +
                 "\nSaldo disponible: " + cuentaEncontrada.getSaldo());
     }
+
+    public static void removeClient() {
+        Cliente.removeClient(listaClientes);
+    }
+
 }
-
-
-
