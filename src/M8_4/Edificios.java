@@ -1,6 +1,6 @@
 package M8_4;
 
-public class Edificios {
+public abstract class Edificios {
     private String nombre;
     private int numPlantas;
     private int superficie;
@@ -24,20 +24,10 @@ public class Edificios {
     }
 
     public int limpiar() {
-        int tiempo = this.superficie / 5;
+        int tiempo = superficie / 5;
         int tiempoAdicional = (int) ((this.numPlantas - 1) * 0.5);
         return tiempo + tiempoAdicional;
     }
 
-    public int costeMensual() {
-        int costeDiario = 60;
-        int costeMensual = costeDiario * 30;
-        return costeMensual;
-    }
-
-//    public int vigiliancia() {
-//        int vigilantesNecesarios = this.superficie/1000;
-//        int
-//
-//    }
+    public abstract int calcularCosteVigilancia();
 }

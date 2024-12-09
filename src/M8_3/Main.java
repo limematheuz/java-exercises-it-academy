@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main {
-    private static ArrayList<Cliente> listaClientes = new ArrayList<>();
+    private static final ArrayList<Cliente> listaClientes = new ArrayList<>();
 
     public static void main(String[] args) {
         String[] options = {"Ver clientes", "Crear cliente/a", "Crear cuenta de un cliente/a", "Ingresar euros en una cuenta de un cliente/a", "Eliminar cliente/a", "Retirar euros en una cuenta de un cliente/a", "Salir del programa"};
